@@ -540,20 +540,20 @@ export default function AiPage() {
                 </header>
 
                 {/* Chat Area */}
-                <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:y-8 pb-48 md:pb-32">
+                <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:space-y-8 pb-[280px] md:pb-40">
                     {messages.length === 0 ? (
-                        <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto space-y-12">
+                        <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto space-y-8 md:space-y-12 px-4">
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative">
                                 <div className="absolute inset-0 bg-[#c69f6e]/20 blur-[60px] rounded-full" />
-                                <Bot size={80} className="text-[#c69f6e] relative z-10" />
+                                <Bot size={60} className="md:size-20 text-[#c69f6e] relative z-10" />
                             </motion.div>
 
-                            <div className="space-y-4">
-                                <h2 className="text-4xl font-black tracking-tighter">Comment puis-je vous aider ?</h2>
-                                <p className="text-white/40 font-medium">Cliquez sur un sujet ou tapez votre message.</p>
+                            <div className="space-y-3 md:space-y-4">
+                                <h2 className="text-2xl md:text-4xl font-black tracking-tighter">Comment puis-je vous aider ?</h2>
+                                <p className="text-white/40 font-medium text-sm md:text-base">Cliquez sur un sujet ou tapez votre message.</p>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4 w-full">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 w-full">
                                 {[
                                     { title: "Statistiques d'aujourd'hui", icon: Sparkles },
                                     { title: "Total factures non payées", icon: MessageSquare },
@@ -563,10 +563,10 @@ export default function AiPage() {
                                     <button
                                         key={i}
                                         onClick={() => sendMessageToAI(suggestion.title)}
-                                        className="p-6 bg-white/[0.03] border border-white/5 hover:border-[#c69f6e]/30 hover:bg-white/[0.05] rounded-[2rem] text-left transition-all group"
+                                        className="p-4 md:p-6 bg-white/[0.03] border border-white/5 hover:border-[#c69f6e]/30 hover:bg-white/[0.05] rounded-xl md:rounded-[2rem] text-left transition-all group"
                                     >
-                                        <suggestion.icon size={20} className="text-[#c69f6e] mb-4 group-hover:scale-110 transition-transform" />
-                                        <span className="text-xs font-bold uppercase tracking-widest leading-relaxed">{suggestion.title}</span>
+                                        <suggestion.icon size={18} className="md:size-5 text-[#c69f6e] mb-3 md:mb-4 group-hover:scale-110 transition-transform" />
+                                        <span className="text-[11px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">{suggestion.title}</span>
                                     </button>
                                 ))}
                             </div>
@@ -604,8 +604,8 @@ export default function AiPage() {
                 </div>
 
                 {/* Input Area */}
-                <div className="absolute bottom-20 md:bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent pt-12 z-20">
-                    <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4">
+                <div className="absolute bottom-[88px] md:bottom-0 left-0 right-0 p-3 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/98 to-transparent pt-8 md:pt-12 z-20">
+                    <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-4">
                         <div className="flex-1 relative">
                             <input
                                 type="text"
@@ -613,23 +613,24 @@ export default function AiPage() {
                                 value={input}
                                 onChange={e => setInput(e.target.value)}
                                 onKeyDown={e => e.key === 'Enter' && input.trim() && sendMessageToAI(input)}
-                                className="w-full h-14 md:h-16 bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl pl-5 md:pl-6 pr-14 md:pr-16 text-sm font-medium outline-none focus:border-[#c69f6e]/40 focus:bg-white/[0.05] transition-all"
+                                className="w-full h-12 md:h-16 bg-white/[0.03] border border-white/10 rounded-xl md:rounded-3xl pl-4 md:pl-6 pr-12 md:pr-16 text-sm font-medium outline-none focus:border-[#c69f6e]/40 focus:bg-white/[0.05] transition-all"
                             />
                             <button
                                 onClick={() => input.trim() && sendMessageToAI(input)}
                                 disabled={!input.trim() || isTyping}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 md:p-3 bg-[#c69f6e] hover:bg-[#c69f6e]/80 rounded-xl md:rounded-2xl text-white transition-all disabled:opacity-30"
+                                className="absolute right-1.5 md:right-2 top-1/2 -translate-y-1/2 p-2 md:p-3 bg-[#c69f6e] hover:bg-[#c69f6e]/80 rounded-lg md:rounded-2xl text-white transition-all disabled:opacity-30"
                             >
-                                <Send size={18} />
+                                <Send size={16} className="md:size-[18px]" />
                             </button>
                         </div>
 
                         <button
                             onClick={isCalling ? stopCall : startCall}
-                            className={`h-14 md:h-16 px-6 md:px-8 rounded-2xl md:rounded-3xl flex items-center justify-center gap-3 font-black text-[10px] uppercase tracking-[0.2em] transition-all shadow-2xl ${isCalling ? 'bg-red-500 text-white' : 'bg-white text-black hover:scale-105 active:scale-95'}`}
+                            className={`h-12 md:h-16 px-5 md:px-8 rounded-xl md:rounded-3xl flex items-center justify-center gap-2 md:gap-3 font-black text-[9px] md:text-[10px] uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all shadow-2xl ${isCalling ? 'bg-red-500 text-white' : 'bg-white text-black hover:scale-105 active:scale-95'}`}
                         >
-                            {isCalling ? <PhoneOff size={20} /> : <Phone size={20} />}
-                            {isCalling ? 'Fin' : 'Appeler IA'}
+                            {isCalling ? <PhoneOff size={18} className="md:size-5" /> : <Phone size={18} className="md:size-5" />}
+                            <span className="hidden sm:inline">{isCalling ? 'Fin' : 'Appeler IA'}</span>
+                            <span className="sm:hidden">{isCalling ? 'Fin' : 'Appel'}</span>
                         </button>
                     </div>
                 </div>

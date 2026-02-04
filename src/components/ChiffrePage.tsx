@@ -4947,39 +4947,6 @@ export default function ChiffrePage({ role, onLogout }: ChiffrePageProps) {
                 }
             </AnimatePresence>
 
-            {/* Admin Calendar Modal */}
-            <AnimatePresence>
-                {
-                    showCalendar && role === 'admin' && (
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[70] bg-black/20 backdrop-blur-[2px] flex items-start justify-center pt-24" onClick={() => setShowCalendar(false)}>
-                            <motion.div initial={{ scale: 0.9, opacity: 0, y: -20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: -20 }} className="bg-white rounded-3xl p-6 shadow-2xl border border-[#c69f6e]/20 w-80" onClick={e => e.stopPropagation()}>
-                                <div className="flex items-center justify-between mb-6">
-                                    <button onClick={() => changeMonth(-1)} className="p-2 hover:bg-[#f4ece4] rounded-full text-[#4a3426]"><ChevronLeft size={18} /></button>
-                                    <h3 className="text-lg font-bold text-[#4a3426] capitalize">{new Date(date).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}</h3>
-                                    <button onClick={() => changeMonth(1)} className="p-2 hover:bg-[#f4ece4] rounded-full text-[#4a3426]"><ChevronRight size={18} /></button>
-                                </div>
-                                <div className="grid grid-cols-7 gap-1 text-center mb-2">{['D', 'L', 'M', 'M', 'J', 'V', 'S'].map((d, i) => (<span key={i} className="text-xs font-bold text-[#bba282] uppercase">{d}</span>))}</div>
-                                <div className="grid grid-cols-7 gap-1">
-                                    {generateCalendarDays(date).map((day, i) => {
-                                        if (!day) return <div key={i}></div>;
-                                        const isSelected = new Date(date).getDate() === day;
-                                        return (<button key={i} onClick={() => {
-                                            const parts = date.split('-');
-                                            const newD = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, day);
-                                            const ny = newD.getFullYear();
-                                            const nm = String(newD.getMonth() + 1).padStart(2, '0');
-                                            const nd = String(newD.getDate()).padStart(2, '0');
-                                            setDate(`${ny}-${nm}-${nd}`);
-                                            setShowCalendar(false);
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }} className={`h-9 w-9 rounded-full flex items-center justify-center text-sm font-semibold transition-all ${isSelected ? 'bg-[#4a3426] text-white shadow-lg' : 'text-[#4a3426] hover:bg-[#f4ece4] hover:text-[#c69f6e]'} `}>{day}</button>);
-                                    })}
-                                </div>
-                            </motion.div>
-                        </motion.div>
-                    )
-                }
-            </AnimatePresence>
 
             {/* Click outside to close dropdowns */}
             {showSupplierDropdown !== null && <div className="fixed inset-0 z-40" onClick={() => setShowSupplierDropdown(null)} />}
