@@ -516,31 +516,31 @@ export default function AiPage() {
 
                 {/* Header */}
                 <header className="px-4 md:px-8 py-4 md:py-6 flex items-center justify-between border-b border-white/5 backdrop-blur-md bg-black/20 z-10">
-                    <div className="flex items-center gap-3 md:gap-4 font-inter">
+                    <div className="flex items-center gap-3 md:gap-4">
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-tr from-[#4a3426] to-[#c69f6e] p-[1px]">
-                            <div className="w-full h-full bg-[#0a0a0a] rounded-[9px] md:rounded-[15px] flex items-center justify-center">
-                                <Bot size={20} className="text-[#c69f6e]" />
+                            <div className="w-full h-full bg-[#0a0a0a] rounded-[11px] md:rounded-[15px] flex items-center justify-center">
+                                <Bot className="size-5 md:size-6 text-[#c69f6e]" />
                             </div>
                         </div>
-                        <div className="min-w-0">
-                            <h1 className="text-sm md:text-xl font-black tracking-tight uppercase truncate">AI Business Master</h1>
+                        <div>
+                            <h1 className="text-sm md:text-xl font-black tracking-tight uppercase">AI Business Master</h1>
                             <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Connecté</span>
+                                <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-500 animate-pulse" />
+                                <span className="text-[8px] md:text-[10px] font-black text-white/40 uppercase tracking-widest">Connecté</span>
                             </div>
                         </div>
                     </div>
 
                     <button
                         onClick={() => setMessages([])}
-                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition-all text-white/60 hover:text-white"
+                        className="p-2.5 md:p-3 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition-all text-white/60 hover:text-white"
                     >
-                        <Repeat size={18} />
+                        <Repeat size={16} />
                     </button>
                 </header>
 
                 {/* Chat Area */}
-                <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:space-y-8 pb-40 md:pb-32">
+                <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:y-8 pb-48 md:pb-32">
                     {messages.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto space-y-12">
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative">
@@ -549,11 +549,11 @@ export default function AiPage() {
                             </motion.div>
 
                             <div className="space-y-4">
-                                <h2 className="text-2xl md:text-4xl font-black tracking-tighter">Comment puis-je vous aider ?</h2>
-                                <p className="text-white/40 text-sm md:text-base font-medium">Cliquez sur un sujet ou tapez votre message.</p>
+                                <h2 className="text-4xl font-black tracking-tighter">Comment puis-je vous aider ?</h2>
+                                <p className="text-white/40 font-medium">Cliquez sur un sujet ou tapez votre message.</p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 w-full px-4 md:px-0">
+                            <div className="grid grid-cols-2 gap-4 w-full">
                                 {[
                                     { title: "Statistiques d'aujourd'hui", icon: Sparkles },
                                     { title: "Total factures non payées", icon: MessageSquare },
@@ -563,10 +563,10 @@ export default function AiPage() {
                                     <button
                                         key={i}
                                         onClick={() => sendMessageToAI(suggestion.title)}
-                                        className="p-4 md:p-6 bg-white/[0.03] border border-white/5 hover:border-[#c69f6e]/30 hover:bg-white/[0.05] rounded-2xl md:rounded-[2rem] text-left transition-all group"
+                                        className="p-6 bg-white/[0.03] border border-white/5 hover:border-[#c69f6e]/30 hover:bg-white/[0.05] rounded-[2rem] text-left transition-all group"
                                     >
-                                        <suggestion.icon size={18} className="text-[#c69f6e] mb-3 md:mb-4 group-hover:scale-110 transition-transform" />
-                                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">{suggestion.title}</span>
+                                        <suggestion.icon size={20} className="text-[#c69f6e] mb-4 group-hover:scale-110 transition-transform" />
+                                        <span className="text-xs font-bold uppercase tracking-widest leading-relaxed">{suggestion.title}</span>
                                     </button>
                                 ))}
                             </div>
@@ -582,7 +582,7 @@ export default function AiPage() {
                                 <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-[#c69f6e] text-white' : 'bg-white/10 text-[#c69f6e]'}`}>
                                     {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                                 </div>
-                                <div className={`max-w-[85%] md:max-w-[80%] p-4 md:p-6 rounded-2xl md:rounded-[2rem] text-xs md:text-sm leading-relaxed ${msg.role === 'user' ? 'bg-[#c69f6e]/10 border border-[#c69f6e]/20 text-[#c69f6e]' : 'bg-white/[0.03] border border-white/10 text-white/90 shadow-xl'}`}>
+                                <div className={`max-w-[85%] md:max-w-[80%] p-4 md:p-6 rounded-2xl md:rounded-[2rem] text-[13px] md:text-sm leading-relaxed ${msg.role === 'user' ? 'bg-[#c69f6e]/10 border border-[#c69f6e]/20 text-[#c69f6e]' : 'bg-white/[0.03] border border-white/10 text-white/90 shadow-xl'}`}>
                                     {msg.content}
                                 </div>
                             </motion.div>
@@ -604,32 +604,32 @@ export default function AiPage() {
                 </div>
 
                 {/* Input Area */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent pt-12 z-20 mb-20 md:mb-0">
-                    <div className="max-w-4xl mx-auto flex flex-row items-center gap-2 md:gap-4">
+                <div className="absolute bottom-20 md:bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent pt-12 z-20">
+                    <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4">
                         <div className="flex-1 relative">
                             <input
                                 type="text"
-                                placeholder="Message..."
+                                placeholder="Posez une question à l'IA..."
                                 value={input}
                                 onChange={e => setInput(e.target.value)}
                                 onKeyDown={e => e.key === 'Enter' && input.trim() && sendMessageToAI(input)}
-                                className="w-full h-12 md:h-16 bg-white/[0.05] border border-white/10 rounded-2xl md:rounded-3xl pl-4 md:pl-6 pr-12 md:pr-16 text-xs md:text-sm font-medium outline-none focus:border-[#c69f6e]/40 focus:bg-white/[0.08] transition-all"
+                                className="w-full h-14 md:h-16 bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl pl-5 md:pl-6 pr-14 md:pr-16 text-sm font-medium outline-none focus:border-[#c69f6e]/40 focus:bg-white/[0.05] transition-all"
                             />
                             <button
                                 onClick={() => input.trim() && sendMessageToAI(input)}
                                 disabled={!input.trim() || isTyping}
-                                className="absolute right-1.5 md:right-2 top-1/2 -translate-y-1/2 p-2 md:p-3 bg-[#c69f6e] hover:bg-[#c69f6e]/80 rounded-xl md:rounded-2xl text-white transition-all disabled:opacity-30"
+                                className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 md:p-3 bg-[#c69f6e] hover:bg-[#c69f6e]/80 rounded-xl md:rounded-2xl text-white transition-all disabled:opacity-30"
                             >
-                                <Send className="w-4 h-4 md:w-5 md:h-5" />
+                                <Send size={18} />
                             </button>
                         </div>
+
                         <button
                             onClick={isCalling ? stopCall : startCall}
-                            className={`h-12 md:h-16 px-4 md:px-8 rounded-2xl md:rounded-3xl flex items-center gap-2 md:gap-3 font-black text-[9px] md:text-[10px] uppercase tracking-widest transition-all shadow-2xl ${isCalling ? 'bg-red-500 text-white' : 'bg-white text-black active:scale-95'}`}
+                            className={`h-14 md:h-16 px-6 md:px-8 rounded-2xl md:rounded-3xl flex items-center justify-center gap-3 font-black text-[10px] uppercase tracking-[0.2em] transition-all shadow-2xl ${isCalling ? 'bg-red-500 text-white' : 'bg-white text-black hover:scale-105 active:scale-95'}`}
                         >
-                            {isCalling ? <PhoneOff className="w-4 h-4 md:w-5 md:h-5" /> : <Phone className="w-4 h-4 md:w-5 md:h-5" />}
-                            <span className="hidden xs:inline">{isCalling ? 'Fin' : 'Appeler IA'}</span>
-                            <span className="xs:hidden">{isCalling ? 'Fin' : 'Appel'}</span>
+                            {isCalling ? <PhoneOff size={20} /> : <Phone size={20} />}
+                            {isCalling ? 'Fin' : 'Appeler IA'}
                         </button>
                     </div>
                 </div>
@@ -643,8 +643,8 @@ export default function AiPage() {
                             exit={{ opacity: 0 }}
                             className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-2xl flex items-center justify-center"
                         >
-                            <button onClick={stopCall} className="absolute top-4 md:top-8 right-4 md:right-8 p-3 md:p-4 bg-white/10 hover:bg-white/20 rounded-full z-[210]">
-                                <X className="w-6 h-6 md:w-8 md:h-8" />
+                            <button onClick={stopCall} className="absolute top-8 right-8 p-4 bg-white/10 hover:bg-white/20 rounded-full">
+                                <X size={32} />
                             </button>
 
                             <div className="flex flex-col items-center gap-8 text-center px-4 w-full max-w-lg">
@@ -662,7 +662,7 @@ export default function AiPage() {
                                                     {[1, 2, 3, 4, 5].map(i => (
                                                         <motion.div
                                                             key={i}
-                                                            animate={{ height: [8, 32, 8] }}
+                                                            animate={{ height: [6, 24, 6] }}
                                                             transition={{ repeat: Infinity, duration: 0.5, delay: i * 0.1 }}
                                                             className="w-1 md:w-1.5 bg-[#c69f6e] rounded-full"
                                                         />
@@ -673,29 +673,29 @@ export default function AiPage() {
                                                     animate={{ scale: [1, 1.15, 1] }}
                                                     transition={{ repeat: Infinity, duration: 0.8 }}
                                                 >
-                                                    <Mic className="w-8 h-8 md:w-12 md:h-12 text-red-500" />
+                                                    <Mic className="size-8 md:size-12 text-red-500" />
                                                 </motion.div>
                                             ) : (
-                                                <Bot className="w-12 h-12 md:w-16 md:h-16 text-[#c69f6e]" />
+                                                <Bot className="size-12 md:size-16 text-[#c69f6e]" />
                                             )}
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Status */}
-                                <div className="space-y-1 md:space-y-2">
-                                    <h2 className="text-xl md:text-3xl font-black uppercase">Business Bey AI</h2>
-                                    <p className="text-base md:text-lg font-bold text-[#c69f6e]">{voiceStatus}</p>
-                                    {isTyping && <p className="text-white/50 text-xs md:text-sm">AI réfléchit...</p>}
+                                <div className="space-y-2">
+                                    <h2 className="text-3xl font-black uppercase">Business Bey AI</h2>
+                                    <p className="text-lg font-bold text-[#c69f6e]">{voiceStatus}</p>
+                                    {isTyping && <p className="text-white/50 text-sm">AI réfléchit...</p>}
                                 </div>
 
                                 {/* Controls */}
-                                <div className="flex items-center gap-3 md:gap-4">
+                                <div className="flex items-center gap-3 md:gap-4 scale-90 md:scale-100">
                                     <button
                                         onClick={() => setVoiceEnabled(!voiceEnabled)}
                                         className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all ${voiceEnabled ? 'bg-white/10 text-white' : 'bg-red-500/20 text-red-400'}`}
                                     >
-                                        {voiceEnabled ? <Volume2 className="w-5 h-5 md:w-6 md:h-6" /> : <VolumeX className="w-5 h-5 md:w-6 md:h-6" />}
+                                        {voiceEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
                                     </button>
 
                                     <button
@@ -707,7 +707,7 @@ export default function AiPage() {
                                         disabled={isRecording || isSpeaking || isTyping || !micEnabled}
                                         className={`w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all ${isRecording ? 'bg-red-500 shadow-[0_0_30px_rgba(239,68,68,0.5)]' : 'bg-white/10 hover:bg-white/20 disabled:opacity-40'}`}
                                     >
-                                        <Mic className="w-6 h-6 md:w-8 md:h-8" />
+                                        <Mic className="size-6 md:size-8" />
                                     </button>
 
                                     <button
@@ -719,14 +719,14 @@ export default function AiPage() {
                                         }}
                                         className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all ${showKeyboard ? 'bg-[#c69f6e] text-white' : 'bg-white/10 text-white'}`}
                                     >
-                                        <Keyboard className="w-5 h-5 md:w-6 md:h-6" />
+                                        <Keyboard size={20} />
                                     </button>
 
                                     <button
                                         onClick={stopCall}
                                         className="w-16 h-16 md:w-20 md:h-20 bg-red-500 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(239,68,68,0.4)] hover:scale-105 transition-all"
                                     >
-                                        <PhoneOff className="w-6 h-6 md:w-8 md:h-8" />
+                                        <PhoneOff className="size-6 md:size-8" />
                                     </button>
                                 </div>
 
