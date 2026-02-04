@@ -986,13 +986,13 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-2"
+                className="space-y-1 md:space-y-2"
               >
-                <h2 className="text-4xl font-black tracking-tighter mb-2 uppercase italic text-white leading-none">Expertise Bey</h2>
-                <div className="flex items-center justify-center gap-3">
-                  <div className="h-[1px] w-8 bg-white/20"></div>
-                  <p className="text-[#c69f6e] uppercase tracking-[0.5em] text-[10px] font-black italic">Hardware & Stock Intelligence</p>
-                  <div className="h-[1px] w-8 bg-white/20"></div>
+                <h2 className="text-2xl md:text-4xl font-black tracking-tighter mb-1 md:mb-2 uppercase italic text-white leading-none">Expertise Bey</h2>
+                <div className="flex items-center justify-center gap-2 md:gap-3">
+                  <div className="h-[1px] w-6 md:w-8 bg-white/20"></div>
+                  <p className="text-[#c69f6e] uppercase tracking-[0.3em] md:tracking-[0.5em] text-[8px] md:text-[10px] font-black italic">Hardware & Stock Intelligence</p>
+                  <div className="h-[1px] w-6 md:w-8 bg-white/20"></div>
                 </div>
               </motion.div>
             </div>
@@ -1007,45 +1007,49 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
               >
-                <div className="text-center md:text-left mb-10">
-                  <h2 className="text-3xl font-black text-[#4a3426] tracking-tighter uppercase italic leading-tight">Bienvenue</h2>
-                  <p className="text-[#bba282] font-bold text-[10px] uppercase tracking-widest mt-2 opacity-60">Identification requise</p>
+                <div className="text-center md:text-left mb-6 md:mb-10">
+                  <h2 className="text-2xl md:text-3xl font-black text-[#4a3426] tracking-tighter uppercase italic leading-tight">Bienvenue</h2>
+                  <p className="text-[#bba282] font-bold text-[8px] md:text-[10px] uppercase tracking-widest mt-1 md:mt-2 opacity-60">Identification requise</p>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
                   <div className="space-y-5">
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-5 flex items-center text-[#bba282] group-focus-within:text-[#4a3426] transition-colors">
-                        <User size={18} strokeWidth={2.5} />
+                      <div className="absolute inset-y-0 left-4 md:left-5 flex items-center text-[#bba282] group-focus-within:text-[#4a3426] transition-colors">
+                        <User className="w-4 h-4 md:w-[18px] md:h-[18px]" strokeWidth={2.5} />
                       </div>
                       <input
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        className="w-full h-16 rounded-2xl bg-[#fcfaf8] border border-[#e6dace] px-5 pl-14 text-sm font-black text-[#4a3426] outline-none focus:border-[#4a3426] focus:bg-white transition-all placeholder:text-[#bba282]/40"
+                        className="w-full h-14 md:h-16 rounded-xl md:rounded-2xl bg-[#fcfaf8] border border-[#e6dace] px-4 md:px-5 pl-12 md:pl-14 text-xs md:text-sm font-black text-[#4a3426] outline-none focus:border-[#4a3426] focus:bg-white transition-all placeholder:text-[#bba282]/40"
                         placeholder="IDENTIFIANT"
                         required
                       />
                     </div>
 
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-5 flex items-center text-[#bba282] group-focus-within:text-[#4a3426] transition-colors">
-                        <Lock size={18} strokeWidth={2.5} />
+                      <div className="absolute inset-y-0 left-4 md:left-5 flex items-center text-[#bba282] group-focus-within:text-[#4a3426] transition-colors">
+                        <Lock className="w-4 h-4 md:w-[18px] md:h-[18px]" strokeWidth={2.5} />
                       </div>
                       <input
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full h-16 rounded-2xl bg-[#fcfaf8] border border-[#e6dace] px-5 pl-14 pr-12 text-sm font-black text-[#4a3426] outline-none focus:border-[#4a3426] focus:bg-white transition-all placeholder:text-[#bba282]/40"
+                        className="w-full h-14 md:h-16 rounded-xl md:rounded-2xl bg-[#fcfaf8] border border-[#e6dace] px-4 md:px-5 pl-12 md:pl-14 pr-10 md:pr-12 text-xs md:text-sm font-black text-[#4a3426] outline-none focus:border-[#4a3426] focus:bg-white transition-all placeholder:text-[#bba282]/40"
                         placeholder="••••••••"
                         required
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute inset-y-0 right-5 flex items-center text-[#bba282] hover:text-[#4a3426] transition-colors cursor-pointer"
+                        className="absolute inset-y-0 right-4 md:right-5 flex items-center text-[#bba282] hover:text-[#4a3426] transition-colors cursor-pointer"
                       >
-                        {showPassword ? <EyeOff size={18} strokeWidth={2.5} /> : <Eye size={18} strokeWidth={2.5} />}
+                        {showPassword ? (
+                          <EyeOff className="w-4 h-4 md:w-[18px] md:h-[18px]" strokeWidth={2.5} />
+                        ) : (
+                          <Eye className="w-4 h-4 md:w-[18px] md:h-[18px]" strokeWidth={2.5} />
+                        )}
                       </button>
                     </div>
                   </div>

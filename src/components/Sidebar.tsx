@@ -365,21 +365,24 @@ export default function Sidebar({ role }: SidebarProps) {
                 </div>
             </nav>
 
-            {/* In case there are more than 4 items, we need a way to show them or scroll */}
+            {/* Mobile Extra Menu - Scrollable bubble menu */}
             {navItems.length > 4 && (
-                <div className="lg:hidden fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] flex gap-2">
-                    {navItems.slice(4).map((item) => {
-                        const isActive = pathname === item.href;
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className={`p-2 rounded-xl backdrop-blur-md border ${isActive ? 'bg-[#c69f6e] text-white border-[#c69f6e]' : 'bg-white/80 text-[#4a3426] border-[#e6dace]'} shadow-lg transition-all active:scale-95`}
-                            >
-                                <item.icon size={16} />
-                            </Link>
-                        );
-                    })}
+                <div className="lg:hidden fixed bottom-24 left-0 right-0 z-[100] flex justify-center px-4 pointer-events-none">
+                    <div className="flex gap-2 overflow-x-auto no-scrollbar pb-2 pointer-events-auto max-w-full">
+                        {navItems.slice(4).map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className={`p-3 rounded-2xl backdrop-blur-xl border flex-shrink-0 flex items-center gap-2 shadow-2xl transition-all active:scale-90 ${isActive ? 'bg-[#c69f6e] text-white border-[#c69f6e]' : 'bg-[#4a3426]/90 text-white/90 border-white/10'}`}
+                                >
+                                    <item.icon size={18} />
+                                    <span className="text-[10px] font-black uppercase tracking-widest">{item.name.split(' ')[0]}</span>
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
 
