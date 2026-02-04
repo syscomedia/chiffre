@@ -1,0 +1,50 @@
+{
+  "name": "chiffer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 6001",
+    "build": "next build",
+    "start": "next start -p 6001",
+    "lint": "eslint"
+  },
+  "overrides": {
+    "node-fetch": "^2.7.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.9.11",
+    "@apollo/server": "^5.2.0",
+    "@as-integrations/next": "^4.1.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "face-api.js": "^0.22.2",
+    "framer-motion": "^12.23.26",
+    "graphql": "^16.12.0",
+    "jsonwebtoken": "^9.0.3",
+    "jspdf": "^4.0.0",
+    "lucide-react": "^0.562.0",
+    "next": "16.1.1",
+    "pg": "^8.16.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-quick-pinch-zoom": "^5.1.1",
+    "recharts": "^3.6.0",
+    "sweetalert2": "^11.26.17",
+    "sweetalert2-react-content": "^5.1.1",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.16.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
