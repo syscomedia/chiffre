@@ -328,18 +328,19 @@ export default function Home() {
 
   const { data: statusData, loading: statusLoading, refetch: refetchStatus } = useQuery(GET_SYSTEM_STATUS, {
     pollInterval: 10000,
-    onCompleted: (data) => {
-      // If system is blocked and current user is not admin, logout immediately
-      const isSystemBlocked = data?.getSystemStatus?.is_blocked;
-      const stored = localStorage.getItem('bb_user');
-      if (isSystemBlocked && stored) {
-        const userData = JSON.parse(stored);
-        if (userData.role !== 'admin') {
-          handleLogout();
-        }
+  });
+
+  useEffect(() => {
+    // If system is blocked and current user is not admin, logout immediately
+    const isSystemBlocked = statusData?.getSystemStatus?.is_blocked;
+    const stored = localStorage.getItem('bb_user');
+    if (isSystemBlocked && stored) {
+      const userData = JSON.parse(stored);
+      if (userData.role !== 'admin') {
+        handleLogout();
       }
     }
-  });
+  }, [statusData]);
   const [recordConnection] = useMutation(RECORD_CONNECTION);
   const [disconnectUser] = useMutation(DISCONNECT_USER);
 
