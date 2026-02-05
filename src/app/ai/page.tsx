@@ -540,7 +540,7 @@ export default function AiPage() {
                 </header>
 
                 {/* Chat Area */}
-                <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:space-y-8 pb-[160px] md:pb-40">
+                <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:space-y-8 pb-[220px] md:pb-40">
                     {messages.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto space-y-8 md:space-y-12 px-4">
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative">
@@ -604,7 +604,7 @@ export default function AiPage() {
                 </div>
 
                 {/* Input Area */}
-                <div className="absolute bottom-[88px] md:bottom-0 left-0 right-0 p-3 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/98 to-transparent pt-8 md:pt-12 z-20">
+                <div className="absolute bottom-[140px] md:bottom-0 left-0 right-0 p-3 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/98 to-transparent pt-8 md:pt-12 z-20">
                     <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-4">
                         <div className="flex-1 relative">
                             <input
